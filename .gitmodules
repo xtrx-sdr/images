@@ -1,0 +1,18 @@
+[submodule "sources/libusb3380"]
+	path = sources/libusb3380
+	url = https://github.com/xtrx-sdr/libusb3380
+[submodule "sources/libxtrxdsp"]
+	path = sources/libxtrxdsp
+	url = https://github.com/xtrx-sdr/libxtrxdsp
+[submodule "sources/LMS7002M-driver"]
+	path = sources/LMS7002M-driver
+	url = https://github.com/xtrx-sdr/LMS7002M-driver
+[submodule "sources/xtrx_linux_pcie_drv"]
+	path = sources/xtrx_linux_pcie_drv
+	url = https://github.com/xtrx-sdr/xtrx_linux_pcie_drv
+[submodule "sources/libxtrxll"]
+	path = sources/libxtrxll
+	url = https://github.com/xtrx-sdr/libxtrxll
+[submodule "sources/libxtrx"]
+	path = sources/libxtrx
+	url = https://github.com/xtrx-sdr/libxtrx
