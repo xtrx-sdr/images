@@ -47,7 +47,7 @@ and it should appears in `/proc/modules`
 
 # Getting started
 ## Working with PCIe
-PCIe device is `10ee:7012`. If driver `xtrx` is loaded than character device `/dev/xrx0` should appear.
+PCIe device is `10ee:7012`. If driver `xtrx` is loaded than character device `/dev/xtrx0` should appear.
 
 
 ## Working with USB3 adpapter
