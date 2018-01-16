@@ -48,7 +48,7 @@ and it should appear in `/proc/modules`
 
 
 # Getting started
-## Working with over PCIe bus
+## Working with XTRX over PCIe bus
 PCIe device ID is `10ee:7012`. If driver `xtrx` is loaded correctly, a character device `/dev/xtrx0` should appear.
 
 
