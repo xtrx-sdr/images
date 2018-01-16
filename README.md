@@ -7,7 +7,7 @@ Please report any problems running pre-compiled libraries from this repository d
 ## Structure
  - `binaries` - pre-compiled host binary packages.
  - `sources` - reference source code used for building the binaries. Uses git submodules to reference to the relevant git repositories. See *Manual Compilation* for more details.
- - `firmwares` - FPGA images for reflashing. (not yet published)
+ - `firmware` - FPGA images for reflashing. (not yet published)
 
 
 
