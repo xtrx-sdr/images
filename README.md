@@ -6,18 +6,18 @@ Please report any problems running pre-compiled libraries from this repository d
 
 ## Structure
  - `binaries` - pre-compiled host binary packages.
- - `sources` - reference source code used for building the binaries. Uses git submodules to reference to the relevant git repositores. See *Manual Compilation* for more details.
+ - `sources` - reference source code used for building the binaries. Uses git submodules to reference to the relevant git repositories. See *Manual Compilation* for more details.
  - `firmwares` - FPGA images for reflashing. (not yet published)
 
 
 
-## Manual compilation of host libraries from the `sources` directiry
+## Manual compilation of host libraries from the `sources` directory
 
-You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using USB3 adapter. For debian-based system:
+You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using a USB3 adapter. For Debian-based systems:
 ```
 % sudo apt-get install build-essential libusb-dev cmake dkms
 ``` 
-First you need to clone relevant revisions of source modules:
+First, you need to clone relevant revisions of source modules:
 ```
 % git submodule init
 % git submodule update
