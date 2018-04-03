@@ -13,22 +13,31 @@ Please report any problems running pre-compiled libraries from this repository d
 
 ## Manual compilation of host libraries from the `sources` directory
 
-You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using a USB3 adapter. For Debian-based systems:
+You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using a USB3 adapter.
+ - For Debian-based systems:
 ```
 % sudo apt-get install build-essential libusb-dev cmake dkms
-``` 
+```
+ - For Fedora systems:
+```
+sudo dnf groupinstall 'Development Tools' 'C Development Tools and Libraries'
+sudo dnf install dkms libusb-devel cmake
+```
+
 First, you need to clone relevant revisions of source modules:
 ```
 % git submodule init
 % git submodule update
 ```
-Then you can build the libraries by entering each library's directory and running:
+Then you can build the libraries by running the following from the `sources` directory:
 ```
 % mkdir -p build
 % cd build
 % cmake ..
 % make
 ```
+Please not that by default the SoapySDR is enabled by default. If you don't use it, then you can disable it by adding `-DENABLE_SOAPY=OFF` to `cmake`.
+
 When everything is built you can install them:
 ```
 % sudo make install
