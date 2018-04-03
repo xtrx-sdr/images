@@ -20,7 +20,8 @@ You need C and C++ compiler to build host libraries. `libusb1` is also required 
 ```
  - For Fedora systems:
 ```
-sudo dnf groupinstall 'Development Tools' 'C Development Tools and Libraries' dkms libusb-devel cmake
+sudo dnf groupinstall 'Development Tools' 'C Development Tools and Libraries'
+sudo dnf install dkms libusb-devel cmake
 ```
 
 First, you need to clone relevant revisions of source modules:
