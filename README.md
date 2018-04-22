@@ -35,9 +35,9 @@ When everything is built you can install them:
 ```
 If you're connecting XTRX over a (mini)PCIe bus, you also need to install a kernel driver. 
 ```
-% sudo /usr/sbin/dkms add -m xtrx -v"0.0.1-1"
-% sudo /usr/sbin/dkms build -m xtrx -v"0.0.1-1"
-% sudo /usr/sbin/dkms install -m xtrx -v"0.0.1-1"
+% sudo /usr/sbin/dkms add -m xtrx -v "0.0.1-1"
+% sudo /usr/sbin/dkms build -m xtrx -v "0.0.1-1"
+% sudo /usr/sbin/dkms install -m xtrx -v "0.0.1-1"
 ```
 
 If everything went well, you can now load the driver:
