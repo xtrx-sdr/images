@@ -34,6 +34,8 @@ When everything is built you can install them:
 % sudo make install
 ```
 If you're connecting XTRX over a (mini)PCIe bus, you also need to install a kernel driver. 
+
+The easiest way is to use DKMS:
 ```
 % sudo /usr/sbin/dkms add -m xtrx -v "0.0.1-1"
 % sudo /usr/sbin/dkms build -m xtrx -v "0.0.1-1"
@@ -46,6 +48,11 @@ modprobe xtrx
 ```
 and it should appear in `/proc/modules`
 
+In case you face any issues with DKMS, [please report the issue](https://github.com/xtrx-sdr/images/issues). Meantime, you should be able to build the driver manually. Enter the `sources/xtrx_linux_pcie_drv` directory and run:
+```
+% make
+% sudo insmod xtrx.ko
+```
 
 # Getting started
 ## Working with XTRX over PCIe bus
