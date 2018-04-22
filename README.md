@@ -22,7 +22,7 @@ First, you need to clone relevant revisions of source modules:
 % git submodule init
 % git submodule update
 ```
-Then you can build the libraries by entering each library's directory and running:
+Now enter the `sources` directory and run:
 ```
 % mkdir -p build
 % cd build
