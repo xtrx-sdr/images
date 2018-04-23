@@ -24,6 +24,7 @@ First, you need to clone relevant revisions of source modules:
 ```
 Now enter the `sources` directory and run:
 ```
+% cd sources
 % mkdir -p build
 % cd build
 % cmake ..
