@@ -36,7 +36,14 @@ When everything is built you can install them:
 ```
 If you're connecting XTRX over a (mini)PCIe bus, you also need to install a kernel driver. 
 
-The easiest way is to use DKMS:
+The easiest way is to use DKMS.
+
+First, make sure DKMS can find the driver sources. `make install` by default will install them into `/usr/local/src` while DKMS expect them in `/usr/src`:
+```
+% sudo ln -s /usr/local/src/xtrx-0.0.1-1/ /usr/src/
+```
+
+And now instruct DKMS to build the module:
 ```
 % sudo /usr/sbin/dkms add -m xtrx -v "0.0.1-1"
 % sudo /usr/sbin/dkms build -m xtrx -v "0.0.1-1"
