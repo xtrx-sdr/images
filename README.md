@@ -34,11 +34,14 @@ When everything is built you can install them:
 ```
 % sudo make install
 ```
+
+### PCIe kernel driver compilation
+
 If you're connecting XTRX over a (mini)PCIe bus, you also need to install a kernel driver. 
 
 The easiest way is to use DKMS.
 
-First, make sure DKMS can find the driver sources. `make install` by default will install them into `/usr/local/src` while DKMS expect them in `/usr/src`:
+First, make sure DKMS can find the driver sources. `make install` above will install the driver sources into `/usr/local/src` while DKMS expect them in `/usr/src`, so you should create a symlink:
 ```
 % sudo ln -s /usr/local/src/xtrx-0.0.1-1/ /usr/src/
 ```
@@ -50,11 +53,11 @@ And now instruct DKMS to build the module:
 % sudo /usr/sbin/dkms install -m xtrx -v "0.0.1-1"
 ```
 
-If everything went well, you can now load the driver:
+If everything goes well, you can now load the driver:
 ```
 modprobe xtrx
 ```
-and it should appear in `/proc/modules`
+and it should appear in `/proc/modules` with relevant messages in `dmesg`.
 
 In case you face any issues with DKMS, [please report the issue](https://github.com/xtrx-sdr/images/issues). Meantime, you should be able to build the driver manually. Enter the `sources/xtrx_linux_pcie_drv` directory and run:
 ```
@@ -64,7 +67,21 @@ In case you face any issues with DKMS, [please report the issue](https://github.
 
 # Getting started
 ## Working with XTRX over PCIe bus
-PCIe device ID is `10ee:7012`. If driver `xtrx` is loaded correctly, a character device `/dev/xtrx0` should appear.
+PCIe device ID is `10ee:7012`:
+```
+% lspci -v -d 10ee:
+01:00.0 Memory controller: Xilinx Corporation Device 7012
+	Subsystem: Xilinx Corporation Device 0007
+	Flags: fast devsel, IRQ 255
+	Memory at 91510000 (32-bit, non-prefetchable) [disabled] [size=4K]
+	Memory at 91500000 (32-bit, non-prefetchable) [disabled] [size=64K]
+	Capabilities: [40] Power Management version 3
+	Capabilities: [48] MSI: Enable- Count=1/4 Maskable- 64bit+
+	Capabilities: [60] Express Endpoint, MSI 03
+	Capabilities: [100] Device Serial Number 00-00-00-00-12-34-56-78
+```
+
+If driver `xtrx` is loaded correctly, a character device `/dev/xtrx0` should appear.
 
 
 ## Working with the USB3 adapter
@@ -99,6 +116,7 @@ If you see output similar to the one above, XTRX is ready to rock! And you can n
 
  - GNU Radio: https://github.com/xtrx-sdr/gr-osmosdr
  - sdrangel: https://github.com/xtrx-sdr/sdrangel
- - gqrx (no special branch, use official): http://gqrx.dk/
+ - gqrx (no special branch, but install XTRX branch of gr-osmosdr first): http://gqrx.dk/
  - kalibrate: https://github.com/xtrx-sdr/kalibrate-rtl
+ - osmo-trx: https://github.com/xtrx-sdr/osmo-trx
 
