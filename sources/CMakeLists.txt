@@ -50,7 +50,7 @@ if(NOT CPACK_GENERATOR)
     set(CPACK_GENERATOR DEB)
 endif()
 set(CPACK_PACKAGE_NAME                "libxtrx-all")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "ALL XTRX famali libraryries")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "ALL XTRX family libraries")
 set(CPACK_PACKAGE_VENDOR              "Fairwaves, Inc.")
 set(CPACK_PACKAGE_CONTACT             "http://fairwaves.co/wp/contact-us/")
 set(CPACK_PACKAGE_VERSION             ${LIBVER}-1)
@@ -72,7 +72,21 @@ set(CPACK_PACKAGING_INSTALL_PREFIX  "/usr")
 set(CPACK_PACKAGE_CONTACT           "Sergey Kostanbaev <sergey.kostanbaev@fairwaves.co>")
 
 if(ENABLE_USB3380)
-  install(FILES libxtrxll/mod_usb3380/udev/50-xtrx-usb3380.rules DESTINATION "../etc/udev/rules.d" COMPONENT xtrx-usb)
+  option(INSTALL_UDEV_RULES "Install udev rules for xtrx-usb" OFF)
+  if (INSTALL_UDEV_RULES)
+      set(UDEV_RULES_PATH
+          "/etc/udev/rules.d"
+          CACHE STRING
+          "Target directory for udev rule installation. Ensure you have permissions to write to this directory."
+          )
+      install (
+          FILES libxtrxll/mod_usb3380/udev/50-xtrx-usb3380.rules
+          DESTINATION ${UDEV_RULES_PATH}
+          COMPONENT "xtrx-usb"
+          )
+  else (INSTALL_UDEV_RULES)
+      message (STATUS "Udev rules not being installed, install them with -DINSTALL_UDEV_RULES=ON")
+  endif (INSTALL_UDEV_RULES)
 endif(ENABLE_USB3380)
 
 #########################################################################
