@@ -15,7 +15,7 @@ Please report any problems running pre-compiled libraries from this repository d
 
 You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using a USB3 adapter. For Debian-based systems:
 ```
-% sudo apt-get install build-essential libusb-dev cmake dkms
+% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms
 ``` 
 First, you need to clone relevant revisions of source modules:
 ```
