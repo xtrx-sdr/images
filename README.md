@@ -28,6 +28,8 @@ Now enter the `sources` directory and run:
 % mkdir -p build
 % cd build
 % cmake ..
+OR if you don't want SoapySDR support:
+% cmake -DENABLE_SOAPY=NO ..
 % make
 ```
 When everything is built you can install them:
