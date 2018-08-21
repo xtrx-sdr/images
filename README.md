@@ -35,6 +35,7 @@ OR if you don't want SoapySDR support:
 When everything is built you can install them:
 ```
 % sudo make install
+% sudo ldconfig
 ```
 
 ### PCIe kernel driver compilation
