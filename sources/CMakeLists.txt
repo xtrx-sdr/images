@@ -26,11 +26,18 @@ set(LIB_LMS7002M_NAME "xtrx_lms7002m")
 add_subdirectory(LMS7002M-driver)
 set_target_properties(${LIB_LMS7002M_NAME} PROPERTIES VERSION ${LIBVER} SOVERSION ${MAJOR_VERSION})
 
+add_subdirectory(liblms7002m)
+
 #include_directories(libxtrxdsp)
 
 set(LIBLMS7002M_FOUND        TRUE CACHE INTERNAL "LMS7002M internal")
 set(LIBLMS7002M_LIBRARIES    ${LIB_LMS7002M_NAME} CACHE INTERNAL "LMS7002M internal")
 set(LIBLMS7002M_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/LMS7002M-driver/include CACHE INTERNAL "LMS7002M internal")
+
+set(LIBLMS7COMPACT_FOUND        TRUE CACHE INTERNAL "liblms7compact internal")
+set(LIBLMS7COMPACT_LIBRARIES    lms7compact CACHE INTERNAL "liblms7compact internal")
+set(LIBLMS7COMPACT_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/liblms7002m CACHE INTERNAL "liblms7compact internal")
+
 
 set(LIBXTRXDSP_FOUND        TRUE CACHE INTERNAL "libxtrxdsp internal")
 set(LIBXTRXDSP_LIBRARIES    xtrxdsp CACHE INTERNAL "libxtrxdsp internal")
@@ -39,6 +46,7 @@ set(LIBXTRXDSP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/libxtrxdsp CACHE INTERNA
 set(LIBXTRXLL_FOUND         TRUE CACHE INTERNAL "libxtrxll internal")
 set(LIBXTRXLL_LIBRARIES     xtrxll CACHE INTERNAL "libxtrxll internal")
 set(LIBXTRXLL_INCLUDE_DIRS  ${CMAKE_CURRENT_SOURCE_DIR}/libxtrxll CACHE INTERNAL "libxtrxll internal")
+
 
 add_subdirectory(libxtrx)
 add_subdirectory(xtrx_linux_pcie_drv)
