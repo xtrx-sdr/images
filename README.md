@@ -1,6 +1,8 @@
 # XTRX FPGA images & pre-compiled binaries
 
-This repository hosts FPGA images and pre-compiled binaries for XTRX. Only rev3 hardware and only Ubuntu 16.04 x86_64 binaries are published at this moment.
+This repository hosts FPGA images and pre-compiled binaries for XTRX. Only rev4 hardware and only Ubuntu 16.04 x86_64 binaries are published at this moment.
+
+NOTE: rev3 hardware support is phasing out, please contact <xtrx@fairwaves.co> in order to get support.
 
 Please report any problems running pre-compiled libraries from this repository directly this repo's [issues](https://github.com/xtrx-sdr/images/issues).
 
@@ -15,7 +17,7 @@ Please report any problems running pre-compiled libraries from this repository d
 
 You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using a USB3 adapter. For Debian-based systems:
 ```
-% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms
+% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python-cheetah
 ``` 
 First, you need to clone relevant revisions of source modules:
 ```
