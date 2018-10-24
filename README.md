@@ -69,6 +69,13 @@ In case you face any issues with DKMS, [please report the issue](https://github.
 % make
 % sudo insmod xtrx.ko
 ```
+### Non root access for /dev/xtrx0
+
+If you want to access XTRX from non-root user (which is the typical case) you need to install `udev` rules. 
+```
+cp sources/xtrx_linux_pcie_drv/50-xtrx.rules /etc/udev/rules.d/
+```
+After that you need to restart `udevd` and remove and insert the XTRX driver (`rmmod xtrx; modprobe xtrx`) or reboot the system.
 
 # Getting started
 ## Working with XTRX over PCIe bus
@@ -124,4 +131,12 @@ If you see output similar to the one above, XTRX is ready to rock! And you can n
  - gqrx (no special branch, but install XTRX branch of gr-osmosdr first): http://gqrx.dk/
  - kalibrate: https://github.com/xtrx-sdr/kalibrate-rtl
  - osmo-trx: https://github.com/xtrx-sdr/osmo-trx
+
+
+# FAQ
+## I don't see XTRX in `lspci` output
+1. XTRX is installed into miniPCIe slot. Make sure that your system actually has PCIe lanes routed. Some system routes only USB lines, in the case XTRX LED near edge will be blinking ON-OFF-ON-OFF-.. pattern with ~3sec period. If this this the case install XTRX in other slots.
+2. XTRX is installed into PCIe slot via miniPCIe to PCIe adapter which is not our PCIeX2_FE card. This this rare but we found that some adapters are incompatible in some way (we're investigating the issuie) that prevents system to boot, try another adapter.
+3. XTRX is blinking with ON-OFF-OFF-OFF-ON-OFF-OFF-OFF pattern. It means XTRX hasn't been enumerated on PCIe bus. Try to use other PCIe or miniPCIe slot if available. Please contact <xtrx@fairwaves.co> with details of you installation and system details for future assistance.
+4. In all other cases fell free to contact us <xtrx@fairwaves.co>
 
