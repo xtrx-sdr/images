@@ -140,3 +140,10 @@ If you see output similar to the one above, XTRX is ready to rock! And you can n
 3. XTRX is blinking with ON-OFF-OFF-OFF-ON-OFF-OFF-OFF pattern. It means XTRX hasn't been enumerated on PCIe bus. Try to use other PCIe or miniPCIe slot if available. Please contact <xtrx@fairwaves.co> with details of you installation and system details for future assistance.
 4. In all other cases fell free to contact us <xtrx@fairwaves.co>
 
+## I connected XTRX directly via microUSB cable and I don't see it `lsusb` 
+Unfortunatly USB2 PHY software isn't ready and wasn't pushed in the master. You can check this https://github.com/xtrx-sdr/images/issues/9 for more deatils and suggestions.
+
+## Is Windows driver support planned?
+We plan to add Windows PCIe drivers but we don't have specific schedule for this right now. If it's blocking factor please contact us <xtrx@fairwaves.co>. However, all other software layers are windows compatible and USB3380 adapter should work via WinUSB.
+
+
