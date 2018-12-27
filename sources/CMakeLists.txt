@@ -4,7 +4,7 @@ project(all-xtrx C)
 # Set the version information here
 set(MAJOR_VERSION 0)
 set(API_COMPAT    0)
-set(MINOR_VERSION 1)
+set(MINOR_VERSION 2)
 set(MAINT_VERSION git)
 
 set(LIBVER  "${MAJOR_VERSION}.${API_COMPAT}.${MINOR_VERSION}")
@@ -22,17 +22,9 @@ set(LIBUSB3380_INCLUDE_DIRS  ${CMAKE_CURRENT_SOURCE_DIR}/libusb3380 CACHE INTERN
 add_subdirectory(libxtrxll)
 include_directories(libxtrxll)
 
-set(LIB_LMS7002M_NAME "xtrx_lms7002m")
-add_subdirectory(LMS7002M-driver)
-set_target_properties(${LIB_LMS7002M_NAME} PROPERTIES VERSION ${LIBVER} SOVERSION ${MAJOR_VERSION})
-
 add_subdirectory(liblms7002m)
 
 #include_directories(libxtrxdsp)
-
-set(LIBLMS7002M_FOUND        TRUE CACHE INTERNAL "LMS7002M internal")
-set(LIBLMS7002M_LIBRARIES    ${LIB_LMS7002M_NAME} CACHE INTERNAL "LMS7002M internal")
-set(LIBLMS7002M_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/LMS7002M-driver/include CACHE INTERNAL "LMS7002M internal")
 
 set(LIBLMS7COMPACT_FOUND        TRUE CACHE INTERNAL "liblms7compact internal")
 set(LIBLMS7COMPACT_LIBRARIES    lms7compact CACHE INTERNAL "liblms7compact internal")
