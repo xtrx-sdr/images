@@ -17,8 +17,10 @@ Please report any problems running pre-compiled libraries from this repository d
 
 You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using a USB3 adapter. For Debian-based systems:
 ```
-% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python-cheetah
+% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python-cheetah python
 ``` 
+For Ubuntu 18.04 system you need to install Python 2.7 since python-cheetah is only available for 2.7
+
 First, you need to clone relevant revisions of source modules:
 ```
 % git submodule init
@@ -136,9 +138,25 @@ If you see output similar to the one above, XTRX is ready to rock! And you can n
 # FAQ
 ## I don't see XTRX in `lspci` output
 1. XTRX is installed into miniPCIe slot. Make sure that your system actually has PCIe lanes routed. Some system routes only USB lines, in the case XTRX LED near edge will be blinking ON-OFF-ON-OFF-.. pattern with ~3sec period. If this this the case install XTRX in other slots.
-2. XTRX is installed into PCIe slot via miniPCIe to PCIe adapter which is not our PCIeX2_FE card. This this rare but we found that some adapters are incompatible in some way (we're investigating the issuie) that prevents system to boot, try another adapter.
+2. ~~XTRX is installed into PCIe slot via miniPCIe to PCIe adapter which is not our PCIeX2_FE card. This this rare but we found that some adapters are incompatible in some way (we're investigating the issuie) that prevents system to boot, try another adapter.~~
 3. XTRX is blinking with ON-OFF-OFF-OFF-ON-OFF-OFF-OFF pattern. It means XTRX hasn't been enumerated on PCIe bus. Try to use other PCIe or miniPCIe slot if available. Please contact <xtrx@fairwaves.co> with details of you installation and system details for future assistance.
 4. In all other cases fell free to contact us <xtrx@fairwaves.co>
+
+## XTRX installed into miniPCIe slot prevents the system from booting (don't get even to BIOS)
+This problem can happen if your motherboard provide SMB signals to miniPCIe connector. Most system doesn't. The XTRX rev.4 use reseved pins that are held in hi-Z. However, during the startup DC/DC chip isn't initialized and XTRX actually pulling down the SMB DATA line that mostly connected to critical to boot chips. We're working on firmware fix but currently hardware modification (cutting the fuse on the bottom side of xtrx near the edge) is the only solution.
+Cut the fuse with a sharp knife. Make sure not to use much pressure since you can accidently cut other traces.
+
+![smb_fuse](https://xtrx-sdr.github.io/images/smb_data_fix.jpg)
+
+Systems that known to have such problem
+
+| Vendor   | Model        | Comments |
+| -------- | ------------ | -------- |
+|  Jetway  | NP591        |   |
+|  Via     | Artigo A1200 |   |
+|  Intel   | DQ77KB       | SMBus even mentioned in the block diagrm [doc](https://www.intel.com/content/dam/support/us/en/documents/motherboards/desktop/dq77kb/dq77kb_techprodspec08.pdf) |
+|  Lex     | 2I610HW      | Both miniPCIe have SMBus routed |
+
 
 ## I connected XTRX directly via microUSB cable and I don't see it `lsusb` 
 Unfortunatly USB2 PHY software isn't ready and wasn't pushed in the master. You can check this https://github.com/xtrx-sdr/images/issues/9 for more deatils and suggestions.
