@@ -77,7 +77,10 @@ If you want to access XTRX from non-root user (which is the typical case) you ne
 ```
 cp sources/xtrx_linux_pcie_drv/50-xtrx.rules /etc/udev/rules.d/
 ```
-After that you need to restart `udevd` and remove and insert the XTRX driver (`rmmod xtrx; modprobe xtrx`) or reboot the system.
+After that you need to restart `udevd` and remove and insert the XTRX driver (`rmmod xtrx; modprobe xtrx`) or reboot the system. On ubuntu-like systems you can restart `udev` by
+```
+udevadm control --reload-rules && udevadm trigger
+```
 
 # Getting started
 ## Working with XTRX over PCIe bus
