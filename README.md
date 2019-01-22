@@ -1,6 +1,6 @@
 # XTRX FPGA images & pre-compiled binaries
 
-This repository hosts FPGA images and pre-compiled binaries for XTRX. Only rev4 hardware and only Ubuntu 16.04 x86_64 binaries are published at this moment.
+This repository hosts FPGA images and pre-compiled binaries for XTRX. Only rev4 hardware and Ubuntu 16.04 x86_64 binaries are published at this moment, that works well on Ubuntu 18.04 x86_64 as well.
 
 NOTE: rev3 hardware support is phasing out, please contact <xtrx@fairwaves.co> in order to get support.
 
@@ -50,14 +50,14 @@ The easiest way is to use DKMS.
 
 First, make sure DKMS can find the driver sources. `make install` above will install the driver sources into `/usr/local/src` while DKMS expect them in `/usr/src`, so you should create a symlink:
 ```
-% sudo ln -s /usr/local/src/xtrx-0.0.1-1/ /usr/src/
+% sudo ln -s /usr/local/src/xtrx-0.0.1-2/ /usr/src/
 ```
 
 And now instruct DKMS to build the module:
 ```
-% sudo /usr/sbin/dkms add -m xtrx -v "0.0.1-1"
-% sudo /usr/sbin/dkms build -m xtrx -v "0.0.1-1"
-% sudo /usr/sbin/dkms install -m xtrx -v "0.0.1-1"
+% sudo /usr/sbin/dkms add -m xtrx -v "0.0.1-2"
+% sudo /usr/sbin/dkms build -m xtrx -v "0.0.1-2"
+% sudo /usr/sbin/dkms install -m xtrx -v "0.0.1-2"
 ```
 
 If everything goes well, you can now load the driver:
