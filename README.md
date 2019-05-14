@@ -11,7 +11,12 @@ Please report any problems running pre-compiled libraries from this repository d
  - `sources` - reference source code used for building the binaries. Uses git submodules to reference to the relevant git repositories. See *Manual Compilation* for more details.
  - `firmware` - FPGA images for reflashing. (not yet published)
 
+## Pre-built packages
 
+ - [Alpine Linux](https://github.com/aports-ugly/aports/tree/master/ugly/libxtrx)
+ - [Arch Linux](https://aur.archlinux.org/packages/?K=xtrx)
+ - [openSUSE](https://build.opensuse.org/repositories/hardware:sdr)
+ - [Ubuntu 18.04](https://github.com/satunnainen/images/tree/master/binaries/Ubuntu_18.04_amd64)
 
 ## Manual compilation of host libraries from the `sources` directory
 
