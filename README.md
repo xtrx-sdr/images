@@ -172,4 +172,10 @@ Unfortunatly USB2 PHY software isn't ready and wasn't pushed in the master. You 
 ## Is Windows driver support planned?
 We plan to add Windows PCIe drivers but we don't have specific schedule for this right now. If it's blocking factor please contact us <xtrx@fairwaves.co>. However, all other software layers are windows compatible and USB3380 adapter should work via WinUSB.
 
-
+## I've got a DMA buffer issue on my ARM device
+You should probably increase DMA coherent pool using `coherent_pool=32M` kernel option in case you see following lines in the `dmesg` output:
+```
+[ 7.171608] xtrx: Failed to allocate 31 DMA buffer
+[ 7.171632] xtrx 0000:01:00.0: Failed to register TX DMA buffers.
+```
+For the details see issue #37.
