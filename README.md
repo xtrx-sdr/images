@@ -150,7 +150,7 @@ If you see output similar to the one above, XTRX is ready to rock! And you can n
 3. XTRX is blinking with ON-OFF-OFF-OFF-ON-OFF-OFF-OFF pattern. It means XTRX hasn't been enumerated on PCIe bus. Try to use other PCIe or miniPCIe slot if available. Please contact <xtrx@fairwaves.co> with details of you installation and system details for future assistance.
 4. In all other cases fell free to contact us <xtrx@fairwaves.co>
 
-## Which boards/laptop could you advice to use them with XTRX in PCIe mode?
+## Which board/laptop can I use with XTRX in PCIe mode?
 **You can use any board/laptop with XTRX with a USB3 adapter. Below asumes that you want to use XTRX in PCIe mode**
 
 Generally, your board should have the miniPCIe socket **with the PCI lane**. Most laptops don't work, since generally they have PCI lane only on half-sized miniPCIe sockets (used for WiFi devices) while full-sized sockets designed mostly for use with SATA and USB lanes only. Industrial SBCs frequently have at least one such socket thus are more suitable for XTRX.
