@@ -196,7 +196,7 @@ Systems that known to have such problem
 
 
 ## I connected XTRX directly via microUSB cable and I don't see it `lsusb` 
-Unfortunatly USB2 PHY software isn't ready and wasn't pushed in the master. You can check this https://github.com/xtrx-sdr/images/issues/9 for more deatils and suggestions.
+Unfortunatly USB2 PHY software isn't ready and wasn't pushed in the master. You can check issue [#9](https://github.com/xtrx-sdr/images/issues/9) for more deatils and suggestions.
 
 ## Is Windows driver support planned?
 We plan to add Windows PCIe drivers but we don't have specific schedule for this right now. If it's blocking factor please contact us <xtrx@fairwaves.co>. However, all other software layers are windows compatible and USB3380 adapter should work via WinUSB.
@@ -207,4 +207,4 @@ You should probably increase DMA coherent pool using `coherent_pool=32M` kernel 
 [ 7.171608] xtrx: Failed to allocate 31 DMA buffer
 [ 7.171632] xtrx 0000:01:00.0: Failed to register TX DMA buffers.
 ```
-For the details see issue #37.
+For the details see issue [#37](https://github.com/xtrx-sdr/images/issues/37).
