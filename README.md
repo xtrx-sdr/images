@@ -208,3 +208,17 @@ You should probably increase DMA coherent pool using `coherent_pool=32M` kernel 
 [ 7.171632] xtrx 0000:01:00.0: Failed to register TX DMA buffers.
 ```
 For the details see issue [#37](https://github.com/xtrx-sdr/images/issues/37).
+
+## How do I test GPS and specifically PPS?
+
+For GPS data like current time and geoposition:
+1. Connect your antenna.
+2. Install XTRX driver and libraries (use [pre-built packages](https://github.com/xtrx-sdr/images/blob/master/README.md#pre-built-packages) or build them from sources).
+3. Install `gpsd` and `gpsd-clients` (for example, with `apt`: `apt-get install gpsd gpsd-clients`).
+4. Run `gpsd` with `/dev/ttyXTRX0` specified as the device. In Debian-based distros you can specify device path in `/etc/default/gpsd` file and restart `gpsd` service), otherwise, you can run it with device path as the latest CLI argument, like `sudo gpsd -D 5 -N -n /dev/ttyXTRX0`.
+5. Run `cgps` and wait. You'll get most of GPS data including the current time.
+
+For PPS:
+1. Follow up 1st and 2nd clauses from the instruction above.
+2. Install pps-tools.
+3. Run `sudo ppstest /dev/pps0`. Note, if you have more than one PPS device, you can find correct one using, for an instance, `sudo dmesg | grep xtrx_pps` command.
