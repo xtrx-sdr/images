@@ -222,3 +222,6 @@ For PPS:
 1. Follow up 1st and 2nd clauses from the instruction above.
 2. Install pps-tools.
 3. Run `sudo ppstest /dev/pps0`. Note, if you have more than one PPS device, you can find correct one using, for an instance, `sudo dmesg | grep xtrx_pps` command.
+
+## Can XTRX GPS be accessed through USB3?
+Currently XTRX GPS can be accessed only through PCIe. There are only four USB endpoints available with the USB3 adapter, and SDR part of XTRX uses two of them. So only two USB endpoints are available while USB serial normally requires three USB endpoints. This can potentially be resolved by writing a custom kernel driver - contributions are welcome if someone wants to do that!
