@@ -4,9 +4,6 @@
 [submodule "sources/libxtrxdsp"]
 	path = sources/libxtrxdsp
 	url = https://github.com/xtrx-sdr/libxtrxdsp
-[submodule "sources/LMS7002M-driver"]
-	path = sources/LMS7002M-driver
-	url = https://github.com/xtrx-sdr/LMS7002M-driver
 [submodule "sources/xtrx_linux_pcie_drv"]
 	path = sources/xtrx_linux_pcie_drv
 	url = https://github.com/xtrx-sdr/xtrx_linux_pcie_drv
