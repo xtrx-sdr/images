@@ -211,17 +211,20 @@ For the details see issue [#37](https://github.com/xtrx-sdr/images/issues/37).
 
 ## How do I test GPS and specifically PPS?
 
-For GPS data like current time and geoposition:
-1. Connect your antenna.
-2. Install XTRX driver and libraries (use [pre-built packages](https://github.com/xtrx-sdr/images/blob/master/README.md#pre-built-packages) or build them from sources).
-3. Install `gpsd` and `gpsd-clients` (for example, with `apt`: `apt-get install gpsd gpsd-clients`).
-4. Run `gpsd` with `/dev/ttyXTRX0` specified as the device. In Debian-based distros you can specify device path in `/etc/default/gpsd` file and restart `gpsd` service), otherwise, you can run it with device path as the latest CLI argument, like `sudo gpsd -D 5 -N -n /dev/ttyXTRX0`.
-5. Run `cgps` and wait. You'll get most of GPS data including the current time.
+Prerequisites:
+1. You should connect XTRX with miniPCIe or PCIe since USB3 libs [don't expose GPS interface](#can-xtrx-gps-be-accessed-through-usb3) to the system.
+2. Make sure that XTRX PCIe drivers are installed. You don't need XTRX libraries since it solely depends on kernel devices and `gpsd`/`pps-tools` software.
 
-For PPS:
-1. Follow up 1st and 2nd clauses from the instruction above.
-2. Install pps-tools.
-3. Run `sudo ppstest /dev/pps0`. Note, if you have more than one PPS device, you can find correct one using, for an instance, `sudo dmesg | grep xtrx_pps` command.
+To receive GPS NMEA data like current time and geoposition:
+1. Connect the GPS antenna to XTRX and ensure there is clear sky visibility to acquire GPS signal. Note that coated glass windows may completely block GPS signal, so we recommend putting the GPS antenna outside of a window if you're testing indoors.
+2. Install `gpsd` and `gpsd-clients` packages (for example, for Ubuntu: `apt-get install gpsd gpsd-clients`).
+3. Run `gpsd` with `/dev/ttyXTRX0` specified as the device. In Debian-based distros you can specify device path in `/etc/default/gpsd` file and restart `gpsd` service), otherwise, you can run it with device path as the last CLI argument: `sudo gpsd -D 5 -N -n /dev/ttyXTRX0`.
+4. Run `cgps` to see the NMEA data coming from the XTRX GPS unit, as well as it's decoding into a date, time, and geopositioning.
+
+To test PPS (aka [Pulse-per-second signal](https://en.wikipedia.org/wiki/Pulse-per-second_signal)):
+1. Connect the antenna as described for the NMEA testing above.
+2. Install `pps-tools`.
+3. Run `sudo ppstest /dev/pps0`. Note, if you have more than one PPS device, you can find correct one using, for an instance, `sudo dmesg | grep xtrx_pps` command, just take `ppsN` from the output where `N` is a number, and use it as device's filename in the `/dev` synthetic file system. On successful receiving of PPS signal, you'll see lines like this: `source 0 - assert 1560521435.029030769, sequence: 615 - clear  0.000000000, sequence: 0`.
 
 ## Can XTRX GPS be accessed through USB3?
 Currently XTRX GPS can be accessed only through PCIe. There are only four USB endpoints available with the USB3 adapter, and SDR part of XTRX uses two of them. So only two USB endpoints are available while USB serial normally requires three USB endpoints. This can potentially be resolved by writing a custom kernel driver - contributions are welcome if someone wants to do that!
