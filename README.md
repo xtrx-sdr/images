@@ -210,7 +210,7 @@ You should probably increase DMA coherent pool using `coherent_pool=32M` kernel 
 ```
 For the details, see issue [#37](https://github.com/xtrx-sdr/images/issues/37).
 
-## How do I test GPS and specifically PPS?
+## How to use XTRX GPS to receive NMEA data and PPS signal?
 
 Prerequisites:
 1. You should connect XTRX with miniPCIe or PCIe since USB3 libs [don't expose GPS interface](#can-xtrx-gps-be-accessed-through-usb3) to the system.
@@ -219,7 +219,7 @@ Prerequisites:
 To receive GPS NMEA data like current time and geoposition:
 1. Connect the GPS antenna to XTRX and ensure there is clear sky visibility to acquire GPS signal. Note that coated glass windows may completely block GPS signal, so we recommend putting the GPS antenna outside of a window if you're testing indoors.
 2. Install `gpsd` and `gpsd-clients` packages (for example, for Ubuntu: `apt-get install gpsd gpsd-clients`).
-3. Run `gpsd` with `/dev/ttyXTRX0` specified as the device. In Debian-based distros you can specify device path in `/etc/default/gpsd` file and restart `gpsd` service), otherwise, you can run it with device path as the last CLI argument: `sudo gpsd -D 5 -N -n /dev/ttyXTRX0`.
+3. Run `gpsd` with `/dev/ttyXTRX0` specified as the device. In Debian-based distros you can specify device path in `/etc/default/gpsd` file and restart `gpsd` service). Otherwise, you can run it with device path as the last CLI argument: `sudo gpsd -D 5 -N -n /dev/ttyXTRX0`.
 4. Run `cgps` to see the NMEA data coming from the XTRX GPS unit, as well as it's decoding into a date, time, and geopositioning.
 
 To test PPS (aka [Pulse-per-second signal](https://en.wikipedia.org/wiki/Pulse-per-second_signal)):
