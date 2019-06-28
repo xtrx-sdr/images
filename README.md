@@ -2,7 +2,7 @@
 
 This repository hosts FPGA images and pre-compiled binaries for XTRX. Only rev4 hardware and Ubuntu 16.04 x86_64 binaries are published at this moment, that works well on Ubuntu 18.04 x86_64 as well.
 
-NOTE: rev3 hardware support is phasing out, please contact <xtrx@fairwaves.co> in order to get support.
+NOTE: We're phasing out XTRX rev3 (pre-crowdfunding prototypes) hardware support. Please [contact us](https://xtrx.io/contact/)  to get support.
 
 Please report any problems running pre-compiled libraries from this repository directly this repo's [issues](https://github.com/xtrx-sdr/images/issues).
 
@@ -78,7 +78,7 @@ In case you face any issues with DKMS, [please report the issue](https://github.
 ```
 ### Non-root access for /dev/xtrx0
 
-If you want to access XTRX from non-root user (which is the typical case) you need to install `udev` rules. 
+If you want to access XTRX from non-root user (which is the typical case), you need to install `udev` rules. 
 ```
 cp sources/xtrx_linux_pcie_drv/50-xtrx.rules /etc/udev/rules.d/
 ```
@@ -93,14 +93,14 @@ PCIe device ID is `10ee:7012`:
 ```
 % lspci -v -d 10ee:
 01:00.0 Memory controller: Xilinx Corporation Device 7012
-	Subsystem: Xilinx Corporation Device 0007
-	Flags: fast devsel, IRQ 255
-	Memory at 91510000 (32-bit, non-prefetchable) [disabled] [size=4K]
-	Memory at 91500000 (32-bit, non-prefetchable) [disabled] [size=64K]
-	Capabilities: [40] Power Management version 3
-	Capabilities: [48] MSI: Enable- Count=1/4 Maskable- 64bit+
-	Capabilities: [60] Express Endpoint, MSI 03
-	Capabilities: [100] Device Serial Number 00-00-00-00-12-34-56-78
+    Subsystem: Xilinx Corporation Device 0007
+    Flags: fast devsel, IRQ 255
+    Memory at 91510000 (32-bit, non-prefetchable) [disabled] [size=4K]
+    Memory at 91500000 (32-bit, non-prefetchable) [disabled] [size=64K]
+    Capabilities: [40] Power Management version 3
+    Capabilities: [48] MSI: Enable- Count=1/4 Maskable- 64bit+
+    Capabilities: [60] Express Endpoint, MSI 03
+    Capabilities: [100] Device Serial Number 00-00-00-00-12-34-56-78
 ```
 
 If driver `xtrx` is loaded correctly, a character device `/dev/xtrx0` should appear.
@@ -145,10 +145,11 @@ If you see output similar to the one above, XTRX is ready to rock! And you can n
 
 # FAQ
 ## I don't see XTRX in `lspci` output
-1. XTRX is installed into miniPCIe slot. Make sure that your system actually has PCIe lanes routed. Some system routes only USB lines, in this case XTRX LED near the edge will be blinking ON-OFF-ON-OFF-.. pattern with ~3sec period. If this this the case install XTRX in other slots.
-2. ~~XTRX is installed into PCIe slot via miniPCIe to PCIe adapter which is not our PCIeX2_FE card. This this rare but we found that some adapters are incompatible in some way (we're investigating the issuie) that prevents an operating system to boot, try another adapter.~~
-3. XTRX is blinking with ON-OFF-OFF-OFF-ON-OFF-OFF-OFF pattern. It means XTRX hasn't been enumerated on PCIe bus. Try to use other PCIe or miniPCIe slot if available. Please contact <xtrx@fairwaves.co> with details of your installation and system details for future assistance.
-4. In all other cases feel free to contact us <xtrx@fairwaves.co>
+If XTRX is installed into a miniPCIe slot and an LED near the edge of XTRX is blinking with the ON-OFF-ON-OFF-.. pattern with ~3sec period,  it means XTRX hasn't been enumerated on the PCIe bus.
+
+Make sure that the miniPCIe slot has PCIe lanes routed. Some systems use miniPCIe slots to connect USB-only devices and do not route PCIe lanes of the miniPCIe slot. In this case, you can try XTRX with other miniPCIe slots.
+
+In all other cases, feel free to [contact us](https://xtrx.io/contact/).
 
 ## Which board/laptop can I use with XTRX in PCIe mode?
 **You can use any board/laptop with XTRX with a USB3 adapter. Below assumes that you want to use XTRX in PCIe mode**
@@ -165,7 +166,7 @@ These devices were tested by our customers or us and were reported working fine 
  - [IPC3](https://www.fit-pc.com/web/products/ipc3/) by fit-PC
  - [ARTiGO A1200](https://www.viatech.com/en/support/eol/artigo-a1200-eol/) by VIA (see #28)
 
-These SBCs will probably work with XTRX but were not actually tested. Try on your own risk!
+These SBCs might work with XTRX, but we haven't tested them. Try at your own risk!
  - various SBCs by [AAEON](https://www.aaeon.com/en/c/embedded-single-board-computers/)
  - various SBCs by [Advantech devices](https://www.advantech.com/products/embedded-single-board-computers/sub_c427052f-f55f-4d47-9a84-3a11ed5295df)
  - various devices by [Logic Supply](https://www.logicsupply.com/)
@@ -174,14 +175,14 @@ These SBCs will probably work with XTRX but were not actually tested. Try on you
  - [ECS-9110](http://www.vecow.com/dispPageBox/vecow/VecowCT.aspx?ddsPageID=PRODUCTDTL_EN&dbid=4357925395) by Vecow most likely would work
  - [EC500-KH](https://www.dfi.com/Product/Index/1412) and [EC70B-SU](https://www.dfi.com/Product/Index/125) by DFI most likely would work
  - some older versions of Intel NUC which have miniPCIe may work
- - most likely Dell Latitide D420 would work; it has full-sized miniPCIe (used for WiFi by default) and no PCI whitelist in BIOS
- - some outdated EeePCs like 901 and 701 by asus may work (assuming based on the same premises as for Dell Latitude D420)
+ - most likely Dell Latitude D420 would work; it has full-sized miniPCIe (used for WiFi by default) and no PCI whitelist in BIOS
+ - some outdated EeePCs like 901 and 701 by ASUS may work (assuming based on the same premises as for Dell Latitude D420)
  - any device with full-featured PCIe x2 socket or USB3+ port if you use XTRX with PCIe x2 Front End or USB 3 Adapter respectively (see [CrowdSupply page](https://www.crowdsupply.com/fairwaves/xtrx) for details and order)
 You can also check other SBCs by mentioned vendors.
 
-## XTRX installed into miniPCIe slot prevents the system from booting (don't get even to BIOS)
-This problem can happen if your motherboard provides SMB signals to miniPCIe connector. Most systems don't. The XTRX rev.4 use reserved pins that are held in hi-Z. However, during the startup, DC/DC chip isn't initialized and XTRX actually pulling down the SMB DATA line that mostly connected to critical to boot chips. We're working on firmware fix but currently, hardware modification (cutting the fuse on the bottom side of xtrx near the edge) is the only solution.
-Cut the fuse with a sharp knife. Make sure not to use much pressure since you can accidentally cut other traces.
+## XTRX installed into a miniPCIe slot prevents the system from booting (don't even get to BIOS)
+This problem can happen if your motherboard provides SMB signals to the miniPCIe connector. Most systems don't. The XTRX rev.4 use reserved pins that are held in hi-Z state. However, during the startup, DC/DC chip isn't initialized, and XTRX is pulling down the SMB DATA line, which is often connected to chips critical for the system booting. We're working on a firmware fix, but currently, hardware modification (cutting the fuse on the bottom side of XTRX near the edge as pictured below) is the only solution.
+Cut the fuse pictured below with a sharp knife. Make sure you do not use much pressure, or you can accidentally cut other traces.
 
 ![smb_fuse](https://xtrx-sdr.github.io/images/smb_data_fix.jpg)
 
@@ -195,19 +196,19 @@ Systems that known to have such problem
 |  Lex     | 2I610HW      | Both miniPCIe have SMBus routed |
 
 
-## I connected XTRX directly via microUSB cable and I don't see it `lsusb` 
-Unfortunately, USB2 PHY software isn't ready and wasn't pushed in the master. You can check issue [#9](https://github.com/xtrx-sdr/images/issues/9) for more details and suggestions.
+## I connected XTRX directly via micro-USB cable, and I don't see it `lsusb` 
+Unfortunately, USB2 PHY software isn't ready yet. Check issue [#9](https://github.com/xtrx-sdr/images/issues/9) for more details and suggestions.
 
 ## Is Windows driver support planned?
-We plan to add Windows PCIe drivers but we don't have a specific schedule for this right now. If it's blocking factor please contact us <xtrx@fairwaves.co>. However, all other software layers are windows compatible and USB3380 adapter should work via WinUSB.
+We plan to add Windows PCIe drivers, but we don't have a specific schedule for this right now. If it's blocking factor, please [contact us](https://xtrx.io/contact/). However, all other software layers are windows compatible, and USB3380 adapter should work via WinUSB.
 
 ## I've got a DMA buffer issue on my ARM device
-You should probably increase DMA coherent pool using `coherent_pool=32M` kernel option in case you see following lines in the `dmesg` output:
+You should probably increase DMA coherent pool using `coherent_pool=32M` kernel option in case you see the following lines in the `dmesg` output:
 ```
 [ 7.171608] xtrx: Failed to allocate 31 DMA buffer
 [ 7.171632] xtrx 0000:01:00.0: Failed to register TX DMA buffers.
 ```
-For the details see issue [#37](https://github.com/xtrx-sdr/images/issues/37).
+For the details, see issue [#37](https://github.com/xtrx-sdr/images/issues/37).
 
 ## How do I test GPS and specifically PPS?
 
@@ -226,5 +227,5 @@ To test PPS (aka [Pulse-per-second signal](https://en.wikipedia.org/wiki/Pulse-p
 2. Install `pps-tools`.
 3. Run `sudo ppstest /dev/pps0`. Note, if you have more than one PPS device, you can find correct one using, for an instance, `sudo dmesg | grep xtrx_pps` command, just take `ppsN` from the output where `N` is a number, and use it as device's filename in the `/dev` synthetic file system. On successful receiving of PPS signal, you'll see lines like this: `source 0 - assert 1560521435.029030769, sequence: 615 - clear  0.000000000, sequence: 0`.
 
-## Can XTRX GPS be accessed through USB3?
-Currently XTRX GPS can be accessed only through PCIe. There are only four USB endpoints available with the USB3 adapter, and SDR part of XTRX uses two of them. So only two USB endpoints are available while USB serial normally requires three USB endpoints. This can potentially be resolved by writing a custom kernel driver - contributions are welcome if someone wants to do that!
+## Can I access XTRX GPS through USB3?
+Currently, XTRX GPS can be accessed only through PCIe. There are only four USB endpoints available with the USB3 adapter, and SDR part of XTRX uses two of them. So only two USB endpoints are available while USB serial normally requires three USB endpoints. This can potentially be resolved by writing a custom kernel driver - contributions are welcome if someone wants to do that!
