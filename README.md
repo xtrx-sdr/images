@@ -76,13 +76,13 @@ In case you face any issues with DKMS, [please report the issue](https://github.
 % make
 % sudo insmod xtrx.ko
 ```
-### Non root access for /dev/xtrx0
+### Non-root access for /dev/xtrx0
 
 If you want to access XTRX from non-root user (which is the typical case) you need to install `udev` rules. 
 ```
 cp sources/xtrx_linux_pcie_drv/50-xtrx.rules /etc/udev/rules.d/
 ```
-After that you need to restart `udevd` and remove and insert the XTRX driver (`rmmod xtrx; modprobe xtrx`) or reboot the system. On ubuntu-like systems you can restart `udev` by
+After that, you need to restart `udevd` and remove and insert the XTRX driver (`rmmod xtrx; modprobe xtrx`) or reboot the system. On ubuntu-like systems, you can restart `udev` by
 ```
 udevadm control --reload-rules && udevadm trigger
 ```
@@ -119,7 +119,7 @@ Run this command to check that your XTRX is connected properly and is not dead:
 % test_xtrx -t -l2
 ```
 
-Output should be like this
+The output should be like this
 ```
 CPU Features: SSE2+ SSE4.1+ AVX+ FMA+
 Master: 31999999.863761; RX rate: 3999999.982970; TX rate: 0.000000
@@ -145,13 +145,13 @@ If you see output similar to the one above, XTRX is ready to rock! And you can n
 
 # FAQ
 ## I don't see XTRX in `lspci` output
-1. XTRX is installed into miniPCIe slot. Make sure that your system actually has PCIe lanes routed. Some system routes only USB lines, in the case XTRX LED near edge will be blinking ON-OFF-ON-OFF-.. pattern with ~3sec period. If this this the case install XTRX in other slots.
-2. ~~XTRX is installed into PCIe slot via miniPCIe to PCIe adapter which is not our PCIeX2_FE card. This this rare but we found that some adapters are incompatible in some way (we're investigating the issuie) that prevents system to boot, try another adapter.~~
-3. XTRX is blinking with ON-OFF-OFF-OFF-ON-OFF-OFF-OFF pattern. It means XTRX hasn't been enumerated on PCIe bus. Try to use other PCIe or miniPCIe slot if available. Please contact <xtrx@fairwaves.co> with details of you installation and system details for future assistance.
-4. In all other cases fell free to contact us <xtrx@fairwaves.co>
+1. XTRX is installed into miniPCIe slot. Make sure that your system actually has PCIe lanes routed. Some system routes only USB lines, in this case XTRX LED near the edge will be blinking ON-OFF-ON-OFF-.. pattern with ~3sec period. If this this the case install XTRX in other slots.
+2. ~~XTRX is installed into PCIe slot via miniPCIe to PCIe adapter which is not our PCIeX2_FE card. This this rare but we found that some adapters are incompatible in some way (we're investigating the issuie) that prevents an operating system to boot, try another adapter.~~
+3. XTRX is blinking with ON-OFF-OFF-OFF-ON-OFF-OFF-OFF pattern. It means XTRX hasn't been enumerated on PCIe bus. Try to use other PCIe or miniPCIe slot if available. Please contact <xtrx@fairwaves.co> with details of your installation and system details for future assistance.
+4. In all other cases feel free to contact us <xtrx@fairwaves.co>
 
 ## Which board/laptop can I use with XTRX in PCIe mode?
-**You can use any board/laptop with XTRX with a USB3 adapter. Below asumes that you want to use XTRX in PCIe mode**
+**You can use any board/laptop with XTRX with a USB3 adapter. Below assumes that you want to use XTRX in PCIe mode**
 
 Generally, your board should have the miniPCIe socket **with the PCI lane**. Most laptops don't work, since generally they have PCI lane only on half-sized miniPCIe sockets (used for WiFi devices) while full-sized sockets designed mostly for use with SATA and USB lanes only. Industrial SBCs frequently have at least one such socket thus are more suitable for XTRX.
 
@@ -180,8 +180,8 @@ These SBCs will probably work with XTRX but were not actually tested. Try on you
 You can also check other SBCs by mentioned vendors.
 
 ## XTRX installed into miniPCIe slot prevents the system from booting (don't get even to BIOS)
-This problem can happen if your motherboard provide SMB signals to miniPCIe connector. Most system doesn't. The XTRX rev.4 use reseved pins that are held in hi-Z. However, during the startup DC/DC chip isn't initialized and XTRX actually pulling down the SMB DATA line that mostly connected to critical to boot chips. We're working on firmware fix but currently hardware modification (cutting the fuse on the bottom side of xtrx near the edge) is the only solution.
-Cut the fuse with a sharp knife. Make sure not to use much pressure since you can accidently cut other traces.
+This problem can happen if your motherboard provides SMB signals to miniPCIe connector. Most systems don't. The XTRX rev.4 use reserved pins that are held in hi-Z. However, during the startup, DC/DC chip isn't initialized and XTRX actually pulling down the SMB DATA line that mostly connected to critical to boot chips. We're working on firmware fix but currently, hardware modification (cutting the fuse on the bottom side of xtrx near the edge) is the only solution.
+Cut the fuse with a sharp knife. Make sure not to use much pressure since you can accidentally cut other traces.
 
 ![smb_fuse](https://xtrx-sdr.github.io/images/smb_data_fix.jpg)
 
@@ -191,15 +191,15 @@ Systems that known to have such problem
 | -------- | ------------ | -------- |
 |  Jetway  | NP591        |   |
 |  Via     | Artigo A1200 |   |
-|  Intel   | DQ77KB       | SMBus even mentioned in the block diagrm [doc](https://www.intel.com/content/dam/support/us/en/documents/motherboards/desktop/dq77kb/dq77kb_techprodspec08.pdf) |
+|  Intel   | DQ77KB       | SMBus even mentioned in the block diagram [doc](https://www.intel.com/content/dam/support/us/en/documents/motherboards/desktop/dq77kb/dq77kb_techprodspec08.pdf) |
 |  Lex     | 2I610HW      | Both miniPCIe have SMBus routed |
 
 
 ## I connected XTRX directly via microUSB cable and I don't see it `lsusb` 
-Unfortunatly USB2 PHY software isn't ready and wasn't pushed in the master. You can check this https://github.com/xtrx-sdr/images/issues/9 for more deatils and suggestions.
+Unfortunately, USB2 PHY software isn't ready and wasn't pushed in the master. You can check issue [#9](https://github.com/xtrx-sdr/images/issues/9) for more details and suggestions.
 
 ## Is Windows driver support planned?
-We plan to add Windows PCIe drivers but we don't have specific schedule for this right now. If it's blocking factor please contact us <xtrx@fairwaves.co>. However, all other software layers are windows compatible and USB3380 adapter should work via WinUSB.
+We plan to add Windows PCIe drivers but we don't have a specific schedule for this right now. If it's blocking factor please contact us <xtrx@fairwaves.co>. However, all other software layers are windows compatible and USB3380 adapter should work via WinUSB.
 
 ## I've got a DMA buffer issue on my ARM device
 You should probably increase DMA coherent pool using `coherent_pool=32M` kernel option in case you see following lines in the `dmesg` output:
@@ -207,4 +207,24 @@ You should probably increase DMA coherent pool using `coherent_pool=32M` kernel 
 [ 7.171608] xtrx: Failed to allocate 31 DMA buffer
 [ 7.171632] xtrx 0000:01:00.0: Failed to register TX DMA buffers.
 ```
-For the details see issue #37.
+For the details see issue [#37](https://github.com/xtrx-sdr/images/issues/37).
+
+## How do I test GPS and specifically PPS?
+
+Prerequisites:
+1. You should connect XTRX with miniPCIe or PCIe since USB3 libs [don't expose GPS interface](#can-xtrx-gps-be-accessed-through-usb3) to the system.
+2. Make sure that XTRX PCIe drivers are installed. You don't need XTRX libraries since it solely depends on kernel devices and `gpsd`/`pps-tools` software.
+
+To receive GPS NMEA data like current time and geoposition:
+1. Connect the GPS antenna to XTRX and ensure there is clear sky visibility to acquire GPS signal. Note that coated glass windows may completely block GPS signal, so we recommend putting the GPS antenna outside of a window if you're testing indoors.
+2. Install `gpsd` and `gpsd-clients` packages (for example, for Ubuntu: `apt-get install gpsd gpsd-clients`).
+3. Run `gpsd` with `/dev/ttyXTRX0` specified as the device. In Debian-based distros you can specify device path in `/etc/default/gpsd` file and restart `gpsd` service), otherwise, you can run it with device path as the last CLI argument: `sudo gpsd -D 5 -N -n /dev/ttyXTRX0`.
+4. Run `cgps` to see the NMEA data coming from the XTRX GPS unit, as well as it's decoding into a date, time, and geopositioning.
+
+To test PPS (aka [Pulse-per-second signal](https://en.wikipedia.org/wiki/Pulse-per-second_signal)):
+1. Connect the antenna as described for the NMEA testing above.
+2. Install `pps-tools`.
+3. Run `sudo ppstest /dev/pps0`. Note, if you have more than one PPS device, you can find correct one using, for an instance, `sudo dmesg | grep xtrx_pps` command, just take `ppsN` from the output where `N` is a number, and use it as device's filename in the `/dev` synthetic file system. On successful receiving of PPS signal, you'll see lines like this: `source 0 - assert 1560521435.029030769, sequence: 615 - clear  0.000000000, sequence: 0`.
+
+## Can XTRX GPS be accessed through USB3?
+Currently XTRX GPS can be accessed only through PCIe. There are only four USB endpoints available with the USB3 adapter, and SDR part of XTRX uses two of them. So only two USB endpoints are available while USB serial normally requires three USB endpoints. This can potentially be resolved by writing a custom kernel driver - contributions are welcome if someone wants to do that!
