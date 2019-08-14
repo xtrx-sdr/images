@@ -141,6 +141,7 @@ If you see output similar to the one above, XTRX is ready to rock! And you can n
  - gqrx (no special branch, but install XTRX branch of gr-osmosdr first): http://gqrx.dk/
  - kalibrate: https://github.com/xtrx-sdr/kalibrate-rtl
  - osmo-trx: https://github.com/xtrx-sdr/osmo-trx
+ - dump1090 (via SoapySDR): https://github.com/bkerler/dump1090
 
 
 # FAQ
