@@ -89,6 +89,22 @@ After that, you need to restart `udevd` and remove and insert the XTRX driver (`
 udevadm control --reload-rules && udevadm trigger
 ```
 
+
+# Flashing XTRX
+
+**WARNING:** Flashing XTRX  has risks of bricking/damaging your XTRX if interupted or a wrong image is flashed.
+
+The fastest and easiest way to flash XTRX is using `test_xtrxflash` which doesn't require any additional equipment and works both over USB3 and miniPCIe:
+```
+sudo ./test_xtrxflash -w <image_file.bin>
+```
+where `<image_file.bin>` is one of the files from the [FPGA folder of this repo](https://github.com/xtrx-sdr/images/tree/master/FPGA):
+* `xtrxr4_top.bin` - for XTRX rev4 CS (aka "original" XTRX)
+* `xtrxr4PRO_top.bin` - for XTRX rev4 PRO
+
+`test_xtrxflash` relies on a functioning FPGA, so it can't be used for recovery if you brick your XTRX with incorrect flashing. In that case, you can use a Xilinx USB cable (or any compatible one) with the Fairwaves PCIe adapter. Fairwaves PCIe adapter is also useful to get full PCIe 2.0 x2 throughput from your XTRX.
+
+
 # Getting started
 ## Working with XTRX over PCIe bus
 PCIe device ID is `10ee:7012`:
