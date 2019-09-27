@@ -13,6 +13,8 @@ Please report any problems running pre-compiled libraries from this repository d
 
 ## Pre-built packages
 
+Binary packages are available for the following distributions. Please note that they are maintained by volunteers and by Fairwaves itself.
+
  - [Alpine Linux](https://github.com/aports-ugly/aports/tree/master/ugly/libxtrx)
  - [Arch Linux](https://aur.archlinux.org/packages/?K=xtrx)
  - [openSUSE](https://build.opensuse.org/project/show/hardware:sdr)
