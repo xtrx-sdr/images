@@ -164,6 +164,7 @@ These devices were tested by our customers or us and were reported working fine 
  - various SBCs by [PC Engines](https://www.pcengines.ch/), specifically [apu2c4](https://pcengines.ch/apu2c4.htm), [apu1d4](https://www.pcengines.ch/apu1d4.htm), [apu2d4](https://pcengines.ch/apu2d4.htm), and [apu4b4](https://www.pcengines.ch/apu4b4.htm) (may be suitable for 1 XTRX only, check the specs)
  - [Newport GW6300](http://www.gateworks.com/product/item/newport-gw6300-single-board-computer) by GATEWORKS
  - [ROCKPro64](https://www.pine64.org/rockpro64/) by Pine64
+ - [IPC3](https://www.fit-pc.com/web/products/ipc3/) with [FM-XTDM2](http://www.fit-pc.com/wiki/index.php/FACE_Modules:FM-XTDM2) module by fit-PC
  - [ARTiGO A1200](https://www.viatech.com/en/support/eol/artigo-a1200-eol/) by VIA (see #28)
 
 These SBCs might work with XTRX, but we haven't tested them. Try at your own risk!
