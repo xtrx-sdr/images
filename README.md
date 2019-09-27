@@ -15,7 +15,7 @@ Please report any problems running pre-compiled libraries from this repository d
 
  - [Alpine Linux](https://github.com/aports-ugly/aports/tree/master/ugly/libxtrx)
  - [Arch Linux](https://aur.archlinux.org/packages/?K=xtrx)
- - [openSUSE](https://build.opensuse.org/repositories/hardware:sdr)
+ - [openSUSE](https://build.opensuse.org/project/show/hardware:sdr)
  - [Ubuntu 18.04](https://launchpad.net/~fairwaves/+archive/ubuntu/xtrx)
 
 ## Manual compilation of host libraries from the `sources` directory
