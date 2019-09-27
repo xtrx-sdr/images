@@ -92,7 +92,7 @@ udevadm control --reload-rules && udevadm trigger
 
 # Flashing XTRX
 
-**WARNING:** Flashing XTRX  has risks of bricking/damaging your XTRX if interupted or a wrong image is flashed.
+**WARNING:** Flashing XTRX  has risks of bricking/damaging your XTRX if interupted or a wrong image is flashed. Use Fairwaves USB3 XTRX adapter or Fairwaves PCIe adapter with a compatible JTAG cable to unbrick a bricked XTRX.
 
 The fastest and easiest way to flash XTRX is using `test_xtrxflash` which doesn't require any additional equipment and works both over USB3 and miniPCIe:
 ```
@@ -102,7 +102,12 @@ where `<image_file.bin>` is one of the files from the [FPGA folder of this repo]
 * `xtrxr4_top.bin` - for XTRX rev4 CS (aka "original" XTRX)
 * `xtrxr4PRO_top.bin` - for XTRX rev4 PRO
 
-`test_xtrxflash` relies on a functioning FPGA, so it can't be used for recovery if you brick your XTRX with incorrect flashing. In that case, you can use a Xilinx USB cable (or any compatible one) with the Fairwaves PCIe adapter. Fairwaves PCIe adapter is also useful to get full PCIe 2.0 x2 throughput from your XTRX.
+`test_xtrxflash` relies on a functioning FPGA, so it can't be used for recovery if you brick your XTRX with incorrect flashing. There are two ways to unbrick your XTRX in case of failed flashing:
+1. Use Fairwaves USB3 XTRX adapter with Fairwaves fork of [xc3sprog](https://github.com/xtrx-sdr/xc3sprog). Insert XTRX into the adapter and run the following command:
+```
+$ ./xc3sprog -c usb3380xtrx <image_file.bin>:w:0:BIN
+```
+2. Use Xilinx USB cable (or any compatible one) with the Fairwaves PCIe adapter.
 
 
 # Getting started
