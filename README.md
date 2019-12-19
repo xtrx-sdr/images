@@ -1,8 +1,10 @@
 # XTRX FPGA images & pre-compiled binaries
 
-This repository hosts FPGA images and pre-compiled binaries for XTRX. Only rev4 hardware and Ubuntu 16.04 x86_64 binaries are published at this moment, that works well on Ubuntu 18.04 x86_64 as well.
+This repository hosts FPGA images and pre-compiled binaries for XTRX.
 
-NOTE: We're phasing out XTRX rev3 (pre-crowdfunding prototypes) hardware support. Please [contact us](https://xtrx.io/contact/)  to get support.
+Other sources of documentation:
+ - https://github.com/xtrx-sdr/xtrx-docs - for the hardware documentation
+ - https://www.crowdsupply.com/fairwaves/xtrx - for general XTRX information
 
 Please report any problems running pre-compiled libraries from this repository directly this repo's [issues](https://github.com/xtrx-sdr/images/issues).
 
