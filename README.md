@@ -1,4 +1,4 @@
-# XTRX FPGA images & pre-compiled binaries
+# Fairwaves XTRX FPGA images, pre-compiled binaries, and software documentation
 
 This repository hosts FPGA images and pre-compiled binaries for XTRX.
 
