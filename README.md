@@ -19,6 +19,7 @@ Binary packages are available for the following distributions. Please note that 
 
  - [Alpine Linux](https://github.com/aports-ugly/aports/tree/master/ugly/libxtrx)
  - [Arch Linux](https://aur.archlinux.org/packages/?K=xtrx)
+ - [Debian](https://packages.debian.org/search?suite=all&searchon=names&keywords=xtrx) (testing/unstable main repo)
  - [openSUSE](https://build.opensuse.org/project/show/hardware:sdr)
  - [Ubuntu PPA](https://launchpad.net/~fairwaves/+archive/ubuntu/xtrx) for Ubuntu 16.04, 18.04, and 19.04
 
