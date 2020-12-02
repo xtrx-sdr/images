@@ -26,8 +26,14 @@ Binary packages are available for the following distributions. Please note that 
 ## Manual compilation of host libraries from the `sources` directory
 
 You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using a USB3 adapter. For Debian-based systems:
+
+Ubuntu 18.04 Dependencies:
 ```
-% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python3 python3-pip libfresrp-dev libfresrp0 gpsd gpsd-clients pps-tools libboost-all-dev git qtbase5-dev libqcustomplot-dev libqcustomplot1.3 libqt5printsupport5 doxygen swig
+% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python3 python3-pip gpsd gpsd-clients pps-tools libboost-all-dev git qtbase5-dev libqcustomplot-dev libqcustomplot1.3 libqt5printsupport5 doxygen swig
+```
+Ubuntu 20.04 Dependencies:
+```
+% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python3 python3-pip gpsd gpsd-clients pps-tools libboost-all-dev git qtbase5-dev libqcustomplot-dev libqcustomplot2.0 libqt5printsupport5 doxygen swig
 ```
 Install Cheetah3 via pip3
 ```
