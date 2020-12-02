@@ -27,10 +27,20 @@ Binary packages are available for the following distributions. Please note that 
 
 You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using a USB3 adapter. For Debian-based systems:
 ```
-% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python-cheetah python
-``` 
-For Ubuntu 18.04 system you need to install Python 2.7 since python-cheetah is only available for 2.7
-
+% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python3 python3-pip libfresrp-dev libfresrp0 gpsd gpsd-clients pps-tools libboost-all-dev git qtbase5-dev libqcustomplot-dev libqcustomplot1.3 libqt5printsupport5 doxygen swig
+```
+Install Cheetah3 via pip3
+```
+% pip3 install cheetah3
+```
+Clone the 'images' repoository to your computer:
+```
+% git clone https://github.com/xtrx-sdr/images.git
+```
+Navigate where you downloaded the repo, in this case:
+```
+% cd images
+```
 First, you need to clone relevant revisions of source modules:
 ```
 % git submodule init
@@ -44,9 +54,11 @@ Now enter the `sources` directory and run:
 % cmake ..
 OR if you don't want SoapySDR support:
 % cmake -DENABLE_SOAPY=NO ..
+AND/OR if you want UDEV rules installed:
+% cmake -DINSTALL_UDEV_RULES=ON ..
 % make
 ```
-When everything is built you can install them:
+When everything is built you can install:
 ```
 % sudo make install
 % sudo ldconfig
@@ -81,7 +93,7 @@ In case you face any issues with DKMS, [please report the issue](https://github.
 % make
 % sudo insmod xtrx.ko
 ```
-### Non-root access for /dev/xtrx0
+### Non-root access for /dev/xtrx0 - NOTE: Skip this section if you compiled with UDEV_RULES=ON 
 
 If you want to access XTRX from non-root user (which is the typical case), you need to install `udev` rules. 
 ```
@@ -117,7 +129,7 @@ $ ./xc3sprog -c usb3380xtrx <image_file.bin>:w:0:BIN
 ## Working with XTRX over PCIe bus
 PCIe device ID is `10ee:7012`:
 ```
-% lspci -v -d 10ee:
+% sudo lspci -v -d 10ee:
 01:00.0 Memory controller: Xilinx Corporation Device 7012
     Subsystem: Xilinx Corporation Device 0007
     Flags: fast devsel, IRQ 255
@@ -140,11 +152,14 @@ Bus 002 Device 002: ID 0525:3380 Netchip Technology, Inc.
 ```
 
 ## Testing if XTRX is alive
+Navigate to: 
+```
+% cd /usr/local/lib/xtrx/
+```
 Run this command to check that your XTRX is connected properly and is not dead:
 ```
-% test_xtrx -t -l2
+% ./test_xtrx -t -l2
 ```
-
 The output should be like this
 ```
 CPU Features: SSE2+ SSE4.1+ AVX+ FMA+
@@ -162,12 +177,12 @@ Processed RX 2 x 3.984 = 7.969 MSPS (WIRE: 31.874542)    TX 2 x 0.000 = 0.000 MS
 
 If you see output similar to the one above, XTRX is ready to rock! And you can now build your very own application or install one already coming with the XTRX support:
 
- - GNU Radio: https://github.com/xtrx-sdr/gr-osmosdr
+ - gr-osmosdr and GNURadio: https://github.com/osmocom/gr-osmosdr NOTE: Compile it from source only!!! *Thanks to dchard for the patch and gr-osmosdr PR*
  - sdrangel: https://github.com/xtrx-sdr/sdrangel
  - gqrx (no special branch, but install XTRX branch of gr-osmosdr first): http://gqrx.dk/
  - kalibrate: https://github.com/xtrx-sdr/kalibrate-rtl
  - osmo-trx: https://github.com/xtrx-sdr/osmo-trx
- - dump1090 (via SoapySDR): https://github.com/bkerler/dump1090
+ - dump1090 (via SoapySDR): https://github.com/bkerler/dump1090 
 
 
 # FAQ
