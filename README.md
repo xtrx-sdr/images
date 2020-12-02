@@ -164,7 +164,7 @@ Navigate to:
 ```
 Run this command to check that your XTRX is connected properly and is not dead:
 ```
-% ./test_xtrx -t -l2
+% sudo ./test_xtrx -t -l2
 ```
 The output should be like this
 ```
@@ -258,7 +258,7 @@ You should probably increase DMA coherent pool using `coherent_pool=32M` kernel 
 ```
 For the details, see issue [#37](https://github.com/xtrx-sdr/images/issues/37).
 
-## How to use XTRX GPS to receive NMEA data and PPS signal?
+## How to use XTRX GPS to receive NMEA data and PPS signal? (Works on Ubuntu 18.04.)
 
 Prerequisites:
 1. You should connect XTRX with miniPCIe or PCIe since USB3 libs [don't expose GPS interface](#can-xtrx-gps-be-accessed-through-usb3) to the system.
