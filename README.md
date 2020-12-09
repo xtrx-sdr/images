@@ -28,8 +28,10 @@ Binary packages are available for the following distributions. Please note that 
 (These instructions were tested under Ubuntu 18.04 and 20.04)
 
 You need C and C++ compiler to build host libraries. `libusb1` is also required if you're using a USB3 adapter. For Debian-based systems:
+
+Ubuntu Dependencies (Does not work with Ubuntu 20.04):
 ```
-% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python3 python3-pip libfresrp-dev libfresrp0 gpsd gpsd-clients pps-tools libboost-all-dev git qtbase5-dev libqcustomplot-dev libqcustomplot1.3 libqt5printsupport5 doxygen swig
+% sudo apt-get install build-essential libusb-1.0-0-dev cmake dkms python3 python3-pip gpsd gpsd-clients pps-tools libboost-all-dev git qtbase5-dev libqcustomplot-dev libqcustomplot1.3 libqt5printsupport5 doxygen swig
 ```
 Install Cheetah3 via pip3
 ```
@@ -160,7 +162,7 @@ Navigate to:
 ```
 Run this command to check that your XTRX is connected properly and is not dead:
 ```
-% ./test_xtrx -t -l2
+% sudo ./test_xtrx -t -l2
 ```
 The output should be like this
 ```
@@ -254,7 +256,7 @@ You should probably increase DMA coherent pool using `coherent_pool=32M` kernel 
 ```
 For the details, see issue [#37](https://github.com/xtrx-sdr/images/issues/37).
 
-## How to use XTRX GPS to receive NMEA data and PPS signal?
+## How to use XTRX GPS to receive NMEA data and PPS signal? (Works on Ubuntu 18.04.)
 
 Prerequisites:
 1. You should connect XTRX with miniPCIe or PCIe since USB3 libs [don't expose GPS interface](#can-xtrx-gps-be-accessed-through-usb3) to the system.
