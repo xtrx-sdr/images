@@ -1,0 +1,23 @@
+PROJECT_NAME           = "Fairwaves XTRX Software Defined Radio"
+PROJECT_BRIEF          = "FPGA images, pre-compiled binaries, source and software documentation"
+
+# With the PROJECT_LOGO tag one can specify a logo or an icon that is included
+# in the documentation. The maximum height of the logo should not exceed 55
+# pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
+# the logo to the output directory.
+
+PROJECT_LOGO           = "@CMAKE_CURRENT_SOURCE_DIR@/xtrx.jpg"
+
+# The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
+# into which the generated documentation will be written. If a relative path is
+# entered, it will be relative to the location where doxygen was started. If
+# left blank the current directory will be used.
+
+OUTPUT_DIRECTORY       = "@CMAKE_CURRENT_BINARY_DIR@"
+INPUT                  = "@CMAKE_CURRENT_SOURCE_DIR@/.."
+
+RECURSIVE              = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
