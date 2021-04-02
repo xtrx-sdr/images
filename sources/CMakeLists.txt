@@ -43,6 +43,8 @@ set(LIBXTRXLL_INCLUDE_DIRS  ${CMAKE_CURRENT_SOURCE_DIR}/libxtrxll CACHE INTERNAL
 add_subdirectory(libxtrx)
 add_subdirectory(xtrx_linux_pcie_drv)
 
+add_subdirectory(docs)
+
 ########################################################################
 # package generator
 ########################################################################
