@@ -211,6 +211,7 @@ These devices were tested by our customers or us and were reported working fine 
  - [ROCKPro64](https://www.pine64.org/rockpro64/) by Pine64
  - [IPC3](https://www.fit-pc.com/web/products/ipc3/) with [FM-XTDM2](http://www.fit-pc.com/wiki/index.php/FACE_Modules:FM-XTDM2) module by fit-PC
  - [ARTiGO A1200](https://www.viatech.com/en/support/eol/artigo-a1200-eol/) by VIA (see #28)
+ - [MIO-5251J-U0A1E](https://www.advantech.com/products/bc6786b7-b69b-4fdd-9b63-79180dbd5dcb/mio-5251/mod_ff8534cc-e858-40ba-9bc2-386f19bfee4a) by Advantech
 
 These SBCs might work with XTRX, but we haven't tested them. Try at your own risk!
  - various SBCs by [AAEON](https://www.aaeon.com/en/c/embedded-single-board-computers/)
@@ -240,6 +241,7 @@ Systems that known to have such problem
 |  Via     | Artigo A1200 |   |
 |  Intel   | DQ77KB       | SMBus even mentioned in the block diagram [doc](https://www.intel.com/content/dam/support/us/en/documents/motherboards/desktop/dq77kb/dq77kb_techprodspec08.pdf) |
 |  Lex     | 2I610HW      | Both miniPCIe have SMBus routed |
+| Advantech| MIO-5251J-U0A1E | SMBus mentioned in the board description [web](https://www.advantech.com/products/bc6786b7-b69b-4fdd-9b63-79180dbd5dcb/mio-5251/mod_ff8534cc-e858-40ba-9bc2-386f19bfee4a) |
 
 
 ## I connected XTRX directly via micro-USB cable, and I don't see it `lsusb` 
